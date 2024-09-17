@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace CRUD_con_Programmazione_ad_Oggetti
 {
     public partial class Form1 : Form
     {
+        private List <Record> artistsRecords;
+        private string fileName = "./Records.txt";
         public Form1()
         {
             InitializeComponent();
@@ -19,16 +22,47 @@ namespace CRUD_con_Programmazione_ad_Oggetti
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            artistsRecords = new List<Record>();
         }
 
         private void btn_create_Click(object sender, EventArgs e)
         {
-            string artistName = tb_artistName.Text.ToString();
-            string albumName = tb_albumName.Text.ToString();
+            string artistName = tb_artistName.Text;
+            string albumName = tb_albumName.Text;
             Record record = new Record(artistName, albumName);
+            artistsRecords.Add(record);
 
-            list_records.Items.Add(record.Artist, record.Album);
+            list_records.Items.Add($"{record.Artist} - {record.Album}");
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_serialize_Click(object sender, EventArgs e)
+        {
+            StreamWriter sw = new StreamWriter(fileName);
+            foreach (Record record in artistsRecords)
+            {
+                sw.WriteLine($"{record.Artist};{record.Album}");
+            }
+            sw.Close();
+        }
+
+        private void btn_read_Click(object sender, EventArgs e)
+        {
+            StreamReader sr = new StreamReader(fileName);
+            string line = sr.ReadLine();
+
+            while (line != null)
+            {
+                Record record = new Record(line.Split(';')[0], line.Split(';')[1]);
+                artistsRecords.Add(record);
+                list_records.Items.Add($"{record.Artist} - {record.Album}");
+                line = sr.ReadLine();
+            }
+            sr.Close();
         }
     }
     class Record

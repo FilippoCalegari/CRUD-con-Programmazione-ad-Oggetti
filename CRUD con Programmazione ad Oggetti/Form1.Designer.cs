@@ -78,6 +78,7 @@
             this.btn_read.TabIndex = 3;
             this.btn_read.Text = "LEGGI";
             this.btn_read.UseVisualStyleBackColor = true;
+            this.btn_read.Click += new System.EventHandler(this.btn_read_Click);
             // 
             // btn_delete
             // 
@@ -87,6 +88,7 @@
             this.btn_delete.TabIndex = 4;
             this.btn_delete.Text = "ELIMINA";
             this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // tb_artistName
             // 
@@ -136,6 +138,7 @@
             this.btn_serialize.TabIndex = 10;
             this.btn_serialize.Text = "SALVA";
             this.btn_serialize.UseVisualStyleBackColor = true;
+            this.btn_serialize.Click += new System.EventHandler(this.btn_serialize_Click);
             // 
             // btn_exit
             // 
