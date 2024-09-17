@@ -148,6 +148,7 @@
             this.btn_exit.TabIndex = 11;
             this.btn_exit.Text = "ESCI";
             this.btn_exit.UseVisualStyleBackColor = true;
+            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
             // 
             // Form1
             // 

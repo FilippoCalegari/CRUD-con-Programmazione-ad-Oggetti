@@ -64,6 +64,11 @@ namespace CRUD_con_Programmazione_ad_Oggetti
             }
             sr.Close();
         }
+
+        private void btn_exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
     class Record
     {
