@@ -27,8 +27,11 @@ namespace CRUD_con_Programmazione_ad_Oggetti
 
         private void btn_create_Click(object sender, EventArgs e)
         {
+            // Salvo i contenuti delle textbox
             string artistName = tb_artistName.Text;
             string albumName = tb_albumName.Text;
+
+            // Creo l'oggetto e lo aggiungo alla lista e alla listbox
             Record record = new Record(artistName, albumName);
             artistsRecords.Add(record);
 
@@ -37,17 +40,39 @@ namespace CRUD_con_Programmazione_ad_Oggetti
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
+            // Salvo la textbox con il nome dell'artista
+            string artistName = tb_artistName.Text;
 
+            if (tb_artistName.Text == string.Empty) // Controllo che la textbox non sia vuota
+            {
+                MessageBox.Show("Inserire il nome dell'artista.");
+            }
+            else
+            {
+                foreach (Record record in artistsRecords) // Scorro la lista di oggetti
+                {
+                    if (record.Artist == artistName) // Se l'artista nella textbox corrisponde a quello nella lista
+                    {
+                        artistsRecords.Remove(record);
+                        list_records.Items.Remove($"{record.Artist} - {record.Album}");
+                        break;
+                    }
+                }
+                MessageBox.Show("Artista e Album cancellati correttamente!");
+            }
         }
 
         private void btn_serialize_Click(object sender, EventArgs e)
         {
+            // Scrivo tutti gli elementi della lista, dentro al file
             StreamWriter sw = new StreamWriter(fileName);
             foreach (Record record in artistsRecords)
             {
                 sw.WriteLine($"{record.Artist};{record.Album}");
             }
             sw.Close();
+
+            MessageBox.Show("Il file è stato salvato correttamente.");
         }
 
         private void btn_read_Click(object sender, EventArgs e)
@@ -55,19 +80,35 @@ namespace CRUD_con_Programmazione_ad_Oggetti
             StreamReader sr = new StreamReader(fileName);
             string line = sr.ReadLine();
 
-            while (line != null)
+            if (line == null)
             {
-                Record record = new Record(line.Split(';')[0], line.Split(';')[1]);
-                artistsRecords.Add(record);
-                list_records.Items.Add($"{record.Artist} - {record.Album}");
-                line = sr.ReadLine();
+                MessageBox.Show("Il file è vuoto.");
+            }
+            else
+            {
+                // Finchè la riga del file non è vuota, deserializzo gli elementi e li metto nella lista e nella listbox
+                while (line != null)
+                {
+                    Record record = new Record(line.Split(';')[0], line.Split(';')[1]);
+                    artistsRecords.Add(record);
+                    list_records.Items.Add($"{record.Artist} - {record.Album}");
+                    line = sr.ReadLine();
+                }
             }
             sr.Close();
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
         {
+            // Chiude il form
             Application.Exit();
+        }
+
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            // Salvo i contenuti delle textbox
+            string artistName = tb_artistName.Text;
+            string albumName = tb_albumName.Text;
         }
     }
     class Record
