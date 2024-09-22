@@ -53,6 +53,7 @@ namespace CRUD_con_Programmazione_ad_Oggetti
                 {
                     if (record.Artist == artistName) // Se l'artista nella textbox corrisponde a quello nella lista
                     {
+                        // Rimuovo l'elemento dalla lista e dalla listbox
                         artistsRecords.Remove(record);
                         list_records.Items.Remove($"{record.Artist} - {record.Album}");
                         break;
@@ -109,6 +110,34 @@ namespace CRUD_con_Programmazione_ad_Oggetti
             // Salvo i contenuti delle textbox
             string artistName = tb_artistName.Text;
             string albumName = tb_albumName.Text;
+            string newArtistName = tb_newArtistName.Text;
+            string newAlbumName = tb_newAlbumName.Text;
+
+            if (tb_artistName.Text == string.Empty || tb_albumName.Text == string.Empty) // Controllo che la textbox non sia vuota
+            {
+                MessageBox.Show("Inserire il nome dell'artista e dell'album.");
+            }
+            else
+            {
+                foreach (Record record in artistsRecords) // Scorro la lista di oggetti
+                {
+                    if (record.Artist == artistName && record.Album == albumName) // Se l'artista nella textbox corrisponde a quello nella lista
+                    {
+                        // Rimuovo l'elemento dalla listbox
+                        list_records.Items.Remove($"{record.Artist} - {record.Album}");
+
+                        // Aggiorno l'oggetto con i nuovi nomi
+                        record.Artist = newArtistName;
+                        record.Album = newAlbumName;
+
+                        // Lo inserisco di nuovo nella listbox
+                        list_records.Items.Add($"{record.Artist} - {record.Album}");
+
+                        MessageBox.Show("Artista e Album modificati correttamente!");
+                        break;
+                    }
+                }
+            }
         }
     }
     class Record
