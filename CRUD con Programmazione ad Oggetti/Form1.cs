@@ -14,7 +14,7 @@ namespace CRUD_con_Programmazione_ad_Oggetti
     public partial class Form1 : Form
     {
         private List <Record> artistsRecords;
-        private string fileName = "./Records.txt";
+        private string fileName = "./NewRecords.txt";
         public Form1()
         {
             InitializeComponent();
@@ -51,12 +51,13 @@ namespace CRUD_con_Programmazione_ad_Oggetti
             {
                 foreach (Record record in artistsRecords) // Scorro la lista di oggetti
                 {
-                    if (record.Artist == artistName) // Se l'artista nella textbox corrisponde a quello nella lista
+                    if (artistName == record.Artist) // Se l'artista nella textbox corrisponde a quello nella lista
                     {
                         // Rimuovo l'elemento dalla lista e dalla listbox
                         artistsRecords.Remove(record);
                         list_records.Items.Remove($"{record.Artist} - {record.Album}");
                         break;
+
                     }
                 }
                 MessageBox.Show("Artista e Album cancellati correttamente!");
@@ -69,7 +70,7 @@ namespace CRUD_con_Programmazione_ad_Oggetti
             StreamWriter sw = new StreamWriter(fileName);
             foreach (Record record in artistsRecords)
             {
-                sw.WriteLine($"{record.Artist};{record.Album}");
+               sw.WriteLine($"{record.Artist};{record.Album}");
             }
             sw.Close();
 
@@ -80,6 +81,9 @@ namespace CRUD_con_Programmazione_ad_Oggetti
         {
             StreamReader sr = new StreamReader(fileName);
             string line = sr.ReadLine();
+            
+            // Salvo la textbox con il nome dell'artista
+            string artistName = tb_artistName.Text;
 
             if (line == null)
             {
@@ -87,6 +91,9 @@ namespace CRUD_con_Programmazione_ad_Oggetti
             }
             else
             {
+                // Svuoto lista
+                list_records.Items.Clear();
+
                 // Finchè la riga del file non è vuota, deserializzo gli elementi e li metto nella lista e nella listbox
                 while (line != null)
                 {
