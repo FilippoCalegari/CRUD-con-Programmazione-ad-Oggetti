@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace CRUD_con_Programmazione_ad_Oggetti
 {
@@ -136,6 +138,15 @@ namespace CRUD_con_Programmazione_ad_Oggetti
                         break;
                     }
                 }
+            }
+        }
+
+        private void btn_openFile_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(fileName))
+            {
+                string percorso = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), fileName); //Dichiarazione percorso (variabile necessaria per il processo di apertura del file)
+                Process.Start(percorso); //Avvio del processo "percorso"
             }
         }
     }
