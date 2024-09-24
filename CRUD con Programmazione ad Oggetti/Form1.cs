@@ -38,6 +38,9 @@ namespace CRUD_con_Programmazione_ad_Oggetti
             artistsRecords.Add(record);
 
             list_records.Items.Add($"{record.Artist} - {record.Album}");
+
+            tb_artistName.Clear();
+            tb_albumName.Clear();
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -64,6 +67,9 @@ namespace CRUD_con_Programmazione_ad_Oggetti
                 }
                 MessageBox.Show("Artista e Album cancellati correttamente!");
             }
+
+            tb_artistName.Clear();
+            tb_albumName.Clear();
         }
 
         private void btn_serialize_Click(object sender, EventArgs e)
@@ -84,9 +90,12 @@ namespace CRUD_con_Programmazione_ad_Oggetti
             // Salvo la textbox con il nome dell'artista
             string artistName = tb_artistName.Text;
 
+            bool found = false;
+
             if (list_records.Items.Count == 0)
             {
                 MessageBox.Show("La lista è vuota.");
+                found = true;
             }
             else
             {
@@ -95,9 +104,19 @@ namespace CRUD_con_Programmazione_ad_Oggetti
                     if (artistName == artistsRecords[i].Artist)
                     {
                         list_records.SelectedIndex = i;
+                        found = true;
+                        break;
                     }
                 }
             }
+
+            if (!found)
+            {
+                MessageBox.Show("Artista non trovato.");
+            }
+
+            tb_artistName.Clear();
+            tb_albumName.Clear();
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
@@ -139,6 +158,11 @@ namespace CRUD_con_Programmazione_ad_Oggetti
                     }
                 }
             }
+
+            tb_artistName.Clear();
+            tb_albumName.Clear();
+            tb_newArtistName.Clear();
+            tb_newAlbumName.Clear();
         }
 
         private void btn_openFile_Click(object sender, EventArgs e)
