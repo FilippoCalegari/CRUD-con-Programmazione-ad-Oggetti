@@ -40,6 +40,8 @@
             // 
             // listView1
             // 
+            this.listView1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.listView1.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(424, 12);
             this.listView1.Name = "listView1";
@@ -86,44 +88,57 @@
             // 
             // btn_alphabeticSort
             // 
+            this.btn_alphabeticSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(185)))), ((int)(((byte)(84)))));
+            this.btn_alphabeticSort.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btn_alphabeticSort.ForeColor = System.Drawing.SystemColors.Control;
             this.btn_alphabeticSort.Location = new System.Drawing.Point(12, 225);
             this.btn_alphabeticSort.Name = "btn_alphabeticSort";
             this.btn_alphabeticSort.Size = new System.Drawing.Size(406, 65);
             this.btn_alphabeticSort.TabIndex = 4;
-            this.btn_alphabeticSort.Text = "ORDINA ALFABETICAMENTE";
-            this.btn_alphabeticSort.UseVisualStyleBackColor = true;
+            this.btn_alphabeticSort.Text = "Ordina alfabeticamente";
+            this.btn_alphabeticSort.UseVisualStyleBackColor = false;
             // 
             // btn_compareArtists
             // 
+            this.btn_compareArtists.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(185)))), ((int)(((byte)(84)))));
+            this.btn_compareArtists.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btn_compareArtists.ForeColor = System.Drawing.SystemColors.Control;
             this.btn_compareArtists.Location = new System.Drawing.Point(12, 296);
             this.btn_compareArtists.Name = "btn_compareArtists";
             this.btn_compareArtists.Size = new System.Drawing.Size(406, 65);
             this.btn_compareArtists.TabIndex = 5;
-            this.btn_compareArtists.Text = "EFFETTUA UNA COMPARAZIONE TRA DUE ARTISTI";
-            this.btn_compareArtists.UseVisualStyleBackColor = true;
+            this.btn_compareArtists.Text = "Effettua una comparazione tra due artisti";
+            this.btn_compareArtists.UseVisualStyleBackColor = false;
             // 
             // btn_higher
             // 
+            this.btn_higher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(185)))), ((int)(((byte)(84)))));
+            this.btn_higher.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btn_higher.ForeColor = System.Drawing.SystemColors.Control;
             this.btn_higher.Location = new System.Drawing.Point(288, 154);
             this.btn_higher.Name = "btn_higher";
             this.btn_higher.Size = new System.Drawing.Size(130, 31);
             this.btn_higher.TabIndex = 6;
             this.btn_higher.Text = "Crescente";
-            this.btn_higher.UseVisualStyleBackColor = true;
+            this.btn_higher.UseVisualStyleBackColor = false;
             // 
             // btn_lower
             // 
+            this.btn_lower.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(185)))), ((int)(((byte)(84)))));
+            this.btn_lower.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btn_lower.ForeColor = System.Drawing.SystemColors.Control;
             this.btn_lower.Location = new System.Drawing.Point(288, 188);
             this.btn_lower.Name = "btn_lower";
             this.btn_lower.Size = new System.Drawing.Size(130, 31);
             this.btn_lower.TabIndex = 7;
             this.btn_lower.Text = "Decrescente";
-            this.btn_lower.UseVisualStyleBackColor = true;
+            this.btn_lower.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1101, 606);
             this.Controls.Add(this.btn_lower);
             this.Controls.Add(this.btn_higher);
@@ -143,13 +158,13 @@
         #endregion
 
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Button btn_countryFilter;
         private System.Windows.Forms.Button btn_genreFilter;
         private System.Windows.Forms.Button btn_listenersSort;
         private System.Windows.Forms.Button btn_alphabeticSort;
         private System.Windows.Forms.Button btn_compareArtists;
         private System.Windows.Forms.Button btn_higher;
         private System.Windows.Forms.Button btn_lower;
+        private System.Windows.Forms.Button btn_countryFilter;
     }
 }
 
